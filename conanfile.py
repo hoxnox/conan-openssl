@@ -18,7 +18,7 @@ class OpenSSLConan(NxConanFile):
 
     def config(self):
         if self.options.with_zlib:
-            self.requires.add("zlib/1.2.11@hoxnox/testing")
+            self.requires.add("zlib/1.2.11@hoxnox/stable")
 
     def do_source(self):
         self.retrieve("57be8618979d80c910728cfc99369bf97b2a1abd8f366ab6ebdee8975ad3874c",
