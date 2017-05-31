@@ -32,7 +32,7 @@ class OpenSSLConan(NxConanFile):
     def do_build(self):
         build_dir = "{staging_dir}/src".format(staging_dir=self.staging_dir)
         tools.untargz("openssl-{v}.tar.gz".format(v=self.version), build_dir)
-        shared_definition = "-static no-shared" if not self.options.shared else "shared"
+        shared_definition = "no-shared" if not self.options.shared else "shared"
         zlib_definition = "no-zlib no-zlib-dynamic" if not self.options.with_zlib else "zlib"
         env_build = AutoToolsBuildEnvironment(self)
         with tools.environment_append(env_build.vars):
@@ -43,5 +43,5 @@ class OpenSSLConan(NxConanFile):
 
 
     def do_package_info(self):
-        self.cpp_info.libs = ["crypto", "ssl"]
+        self.cpp_info.libs = ["ssl", "crypto"]
 
