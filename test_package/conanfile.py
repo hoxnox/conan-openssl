@@ -8,13 +8,14 @@ class OpenSSLTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
     requires = "openssl/1.1.0e@%s/%s" % (username, channel)
     #default_options = "openssl:system=True", "openssl:root=/tmp/sss", "openssl:shared=true"
-    default_options = "openssl:shared=True"
+    default_options = "openssl:shared=True", "zlib:system=True"
     generators = "cmake"
 
     def build(self):
-        cmake = CMake(self.settings)
-        self.run('cmake "%s" %s' % (self.conanfile_directory, cmake.command_line))
-        self.run("cmake --build . %s" % cmake.build_config)
+        cmake = CMake(self)
+        cmake.verbose = True
+        cmake.configure(source_dir = self.conanfile_directory)
+        cmake.build()
 
     def imports(self):
         self.copy(pattern="*.dll"   , dst="bin", src="bin")

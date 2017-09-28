@@ -5,5 +5,7 @@ set(CMAKE_CXX_STANDARD 11)
 include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 conan_basic_setup()
 
+
+find_package(Threads)
 ADD_EXECUTABLE(test test.cpp)
-TARGET_LINK_LIBRARIES(test ${CONAN_LIBS})
+TARGET_LINK_LIBRARIES(test ${CONAN_LIBS} ${CMAKE_THREAD_LIBS_INIT} ${CMAKE_DL_LIBS})
