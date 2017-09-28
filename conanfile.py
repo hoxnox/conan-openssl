@@ -49,8 +49,10 @@ class OpenSSLConan(NxConanFile):
         env_build = AutoToolsBuildEnvironment(self)
         with tools.environment_append(env_build.vars):
             with tools.chdir(src_dir):
-                self.run("./config --prefix=\"{staging}\" {shared} {zlib}".format(
-                    staging=self.staging_dir, shared=shared_definition, zlib = zlib_definition))
+                self.run("./config --prefix=\"{staging}\" {shared} {zlib} {android}".format(
+                    staging=self.staging_dir, shared=shared_definition,
+                    zlib = zlib_definition,
+                    android = "no-hw no-engine no-asm" if self.settings.os == "Android" else ""))
                 self.run("make -j {cpu_count}".format(cpu_count = tools.cpu_count()))
                 self.run("make install_sw")
 
