@@ -6,7 +6,7 @@ username = os.getenv("CONAN_USERNAME", "hoxnox")
 
 class OpenSSLTestConan(ConanFile):
     settings = "os", "compiler", "build_type", "arch"
-    requires = "openssl/1.1.0e@%s/%s" % (username, channel)
+    requires = "openssl/1.1.0g@%s/%s" % (username, channel)
     #default_options = "openssl:system=True", "openssl:root=/tmp/sss", "openssl:shared=true"
     default_options = "openssl:shared=True", "zlib:system=True"
     generators = "cmake"

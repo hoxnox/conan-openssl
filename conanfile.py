@@ -7,7 +7,7 @@ from conans import tools, AutoToolsBuildEnvironment
 
 class OpenSSLConan(NxConanFile):
     name = "openssl"
-    version = "1.1.0e"
+    version = "1.1.0g"
     settings = "os", "compiler", "arch", "build_type"
     url = "http://github.com/hoxnox/conan-openssl"
     license = "https://www.openssl.org/source/license.html"
@@ -23,7 +23,7 @@ class OpenSSLConan(NxConanFile):
                 self.options["zlib"].shared = True
 
     def do_source(self):
-        self.retrieve("e703df4eca8b3687af0bec069ea2e7b9fefcb397701dd0d36620fd205cde82a5",
+        self.retrieve("8e9516b8635bb9113c51a7b5b27f9027692a56b104e75b709e588c3ffd6a0422",
                 [
                     "vendor://openssl/openssl/openssl-{v}.tar.gz".format(v=self.version),
                     "https://github.com/openssl/openssl/archive/OpenSSL_{v}.tar.gz".format(v = self.version.replace('.', '_'))
