@@ -14,7 +14,7 @@ class OpenSSLTestConan(ConanFile):
     def build(self):
         cmake = CMake(self)
         cmake.verbose = True
-        cmake.configure(source_dir = self.conanfile_directory)
+        cmake.configure(source_dir = self.source_folder)
         cmake.build()
 
     def imports(self):
